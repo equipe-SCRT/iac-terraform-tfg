@@ -12,9 +12,11 @@ resource "aws_instance" "ec2-iac-pri-tfg" {
     volume_type = "gp3"
   }
 
-  key_name = aws_key_pair.generated_key.key_name
+  key_name = "tfg_key.pem"
 
-  
+  subnet_id = aws_subnet.sub_pub_tfg.id
+
+  security_groups = [aws_security_group.sg_tech_for_good.name, "default"]
 
   associate_public_ip_address = false
 }
