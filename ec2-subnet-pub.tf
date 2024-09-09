@@ -1,5 +1,5 @@
 resource "aws_instance" "ec2-iac-pub-tfg" {
-  ami = "ami-066784287e358dad1"
+  ami           = "ami-066784287e358dad1"
   instance_type = "t3.small"
 
   tags = {
@@ -12,9 +12,11 @@ resource "aws_instance" "ec2-iac-pub-tfg" {
     volume_type = "gp3"
   }
 
-  key_name = aws_key_pair.generated_key.key_name
+  key_name = "tfg_key.pem"
 
-  
+  subnet_id = aws_subnet.sub_pub_tfg.id
+
+  security_groups = [aws_security_group.sg_tech_for_good.name, "default"]
 
   associate_public_ip_address = true
 }
