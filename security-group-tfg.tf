@@ -1,15 +1,3 @@
-  variable "porta_http" {
-  description = "porta http"
-  default = 80
-  type = number
-}
-
-variable "porta_https" {
-  description = "porta https"
-  default = 443
-  type = number
-}
-
 resource "aws_security_group" "sg_pub_tech_for_good" {
   name = "sg_pub_tech_for_good"
   vpc_id = aws_vpc.vpc_tech_for_good.id
