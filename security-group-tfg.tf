@@ -10,8 +10,9 @@ variable "porta_https" {
   type = number
 }
 
-resource "aws_security_group" "sg_tech_for_good" {
-  name = "sg_tech_for_good"
+resource "aws_security_group" "sg_pub_tech_for_good" {
+  name = "sg_pub_tech_for_good"
+  vpc_id = aws_vpc.vpc_tech_for_good.id
 
   ingress {
     from_port   = 22
@@ -48,3 +49,16 @@ resource "aws_security_group" "sg_tech_for_good" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
+
+resource "aws_security_group" "sg_pri_tech_for_good" {
+  name   = "sg_pri_tech_for_good"
+  vpc_id = aws_vpc.vpc_tech_for_good.id
+
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
