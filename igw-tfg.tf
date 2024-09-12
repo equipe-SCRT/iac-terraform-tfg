@@ -4,5 +4,4 @@ resource "aws_internet_gateway" "igw-tfg" {
   tags = {
     Name = "igw-tfg"
   }
-
 }

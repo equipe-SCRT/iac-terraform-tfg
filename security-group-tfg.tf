@@ -61,4 +61,3 @@ resource "aws_security_group" "sg_pri_tech_for_good" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
-
