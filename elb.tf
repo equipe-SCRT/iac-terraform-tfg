@@ -1,6 +1,5 @@
 resource "aws_elb" "elb_pub_tfg" {
   name               = "elb-pub-tfg"
-  availability_zones = ["us-east-1a", "us-east-1b"]
 
   listener {
     instance_port     = 80
@@ -17,8 +16,12 @@ resource "aws_elb" "elb_pub_tfg" {
   # }
 
   instances = [
-    aws_instance.ec2-iac-pub-tfg-a.id
+    aws_instance.ec2-iac-pub-tfg-a.id,
+    aws_instance.ec2_iac_pub_tfg-b.id
   ]
+
+  subnets = [ aws_subnet.sub_pub_tfg_a.id,
+  aws_subnet.sub_pub_tfg_b.id]
 
   tags = {
     Name = "elb-pub-tfg"
