@@ -1,5 +1,5 @@
 resource "aws_instance" "ec2-iac-pri-tfg" {
-  ami = "ami-066784287e358dad1"
+  ami = "ami-0866a3c8686eaeeba"
   instance_type = "t3.small"
 
   tags = {

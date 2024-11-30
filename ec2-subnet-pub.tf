@@ -1,5 +1,5 @@
 resource "aws_instance" "ec2-iac-pub-tfg-a" {
-  ami           = "ami-066784287e358dad1"
+  ami           = "ami-0866a3c8686eaeeba"
   instance_type = "t3.small"
 
   tags = {
@@ -20,7 +20,7 @@ resource "aws_instance" "ec2-iac-pub-tfg-a" {
 }
 
 resource "aws_instance" "ec2_iac_pub_tfg-b" {
-  ami           = "ami-066784287e358dad1"
+  ami           = "ami-0866a3c8686eaeeba"
   instance_type = "t3.small"
 
   tags = {

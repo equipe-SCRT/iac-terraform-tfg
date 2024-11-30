@@ -3,11 +3,14 @@ resource "tls_private_key" "tfg_key" {
   rsa_bits  = 4096
 }
 
+# Cria a chave pública no AWS EC2 Key Pairs
 resource "aws_key_pair" "key_tfg" {
-  key_name   = "tfg_key"       # Create a "myKey" to AWS!!
+  key_name   = "tfg_key"  # Nome da chave no AWS
   public_key = tls_private_key.tfg_key.public_key_openssh
+}
 
-  provisioner "local-exec" { # Create a "myKey.pem" to your computer!!
-    command = "echo '${aws_key_pair.key_tfg.key_name}' > ./tfg_key.pem"
-  }
+# Salva a chave privada localmente em um arquivo .pem
+resource "local_file" "tfg_key_pem" {
+  filename   = "./tfg_key.pem"
+  content    = tls_private_key.tfg_key.private_key_pem
 }
